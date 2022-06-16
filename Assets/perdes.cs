@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class CambiodeEscena : MonoBehaviour
+public class perdes : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,11 +13,7 @@ public class CambiodeEscena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        transform.position = new Vector3(20, 1, 0);
     }
-
-    public void Load()
-    {
-        SceneManager.LoadScene("Escena1");
-    }
+    
 }

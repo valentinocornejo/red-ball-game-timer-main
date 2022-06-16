@@ -9,8 +9,8 @@ public class movimientoredball : MonoBehaviour
     public bool hit;
     private Rigidbody rb;
 
-    
 
+    public float launchForce;
   
 
 
@@ -96,7 +96,28 @@ public class movimientoredball : MonoBehaviour
         {
             transform.position = new Vector3(20, 1, 0);
         }
-    }
+        if (collision.gameObject.name == "spike3")
+        {
+            transform.position = new Vector3(20, 1, 0);
+        }
+        if (collision.gameObject.name == "spike4")
+        {
+            transform.position = new Vector3(20, 1, 0);
+        }
+        if (collision.gameObject.name == "spike5")
+        {
+            transform.position = new Vector3(20, 1, 0);
+        }
+        if (collision.gameObject.name == "spike6")
+        {
+            transform.position = new Vector3(20, 1, 0);
+        }
 
+        if(collision.gameObject.CompareTag("Trampolin"))
+        {
+            rb.velocity = Vector3.up * launchForce;
+        }
+
+    }
 
 }
