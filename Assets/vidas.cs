@@ -9,7 +9,10 @@ public class vidas : MonoBehaviour
     public Text ContadorVidas;
     public float vidasiniciales = 3;
     public float actualvida;
-    
+
+    public bool inmortal = false;
+    public float tiempoInmortal = 1.0f;
+
 
     private void Update()
     {
@@ -31,11 +34,15 @@ public class vidas : MonoBehaviour
 
     {
         actualvida = vidasiniciales;
+
+
     }
 
     public void QuitarVida(float restarvida)
     {
+        if (inmortal) return;
         actualvida -=restarvida;
+        StartCoroutine(TiempoInmortal());
     }
 
     public void Muerte()
@@ -43,7 +50,13 @@ public class vidas : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-   
+    IEnumerator TiempoInmortal()
+    {
+        inmortal = true;
+        yield return new WaitForSeconds(1);
+        inmortal = false;
+    }
+  
 
 
 }

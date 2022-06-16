@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class movimientoredball : MonoBehaviour
 {
@@ -8,17 +10,34 @@ public class movimientoredball : MonoBehaviour
     public bool salto;
     public bool hit;
     private Rigidbody rb;
-
-
+    public bool muerte;
+   
     public float launchForce;
-  
+
+
+
+
+
+
+    public Text ContadorVidas;
+    public float vidasiniciales = 3;
+    public float actualvida;
+
+    public bool inmortal = false;
+    public float tiempoInmortal = 1.0f;
+
+
 
 
     void Start()
     {
-       
+        muerte = false;
         salto = false;
         rb = GetComponent<Rigidbody>();
+
+
+        actualvida = vidasiniciales;
+
     }
 
     // Update is called once per frame
@@ -67,6 +86,23 @@ public class movimientoredball : MonoBehaviour
 
 
 
+
+        if (actualvida > vidasiniciales)
+        {
+            actualvida = vidasiniciales;
+        }
+        if (actualvida <= 0)
+        {
+            Muerte();
+            muerte = true;
+            if(muerte == true)
+            {
+                SceneManager.LoadScene("Pantalladeinicio");
+            }
+        }
+
+        ContadorVidas.text = actualvida.ToString();
+
     }
     void OnCollisionStay(Collision Col)
     {
@@ -91,10 +127,12 @@ public class movimientoredball : MonoBehaviour
         if (collision.gameObject.name == "spike")
         {
             transform.position = new Vector3(20, 1, 0);
+
         }
         if (collision.gameObject.name == "spike2")
         {
             transform.position = new Vector3(20, 1, 0);
+            actualvida -= 1;
         }
         if (collision.gameObject.name == "spike3")
         {
@@ -119,5 +157,30 @@ public class movimientoredball : MonoBehaviour
         }
 
     }
+
+
+
+
+    public void QuitarVida(float restarvida)
+    {
+        if (inmortal) return;
+        actualvida -= restarvida;
+        StartCoroutine(TiempoInmortal());
+    }
+
+    public void Muerte()
+    {
+        Destroy(this.gameObject);
+    }
+
+    IEnumerator TiempoInmortal()
+    {
+        inmortal = true;
+        yield return new WaitForSeconds(1);
+        inmortal = false;
+    }
+
+
+
 
 }
