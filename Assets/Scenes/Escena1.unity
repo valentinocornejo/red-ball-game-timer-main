@@ -1348,6 +1348,8 @@ MonoBehaviour:
   ContadorVidas: {fileID: 470317545}
   vidasiniciales: 3
   actualvida: 0
+  inmortal: 1
+  tiempoInmortal: 1
 --- !u!1 &826183331
 GameObject:
   m_ObjectHideFlags: 0
