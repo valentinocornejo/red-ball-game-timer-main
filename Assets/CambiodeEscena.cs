@@ -19,6 +19,15 @@ public class CambiodeEscena : MonoBehaviour
 
     public void Load()
     {
-        SceneManager.LoadScene("Escena1");
+      
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Sphere")
+        {
+            SceneManager.LoadScene("Pantalladeinicio");
+        }
+        
+
     }
 }
