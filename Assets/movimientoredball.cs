@@ -104,7 +104,7 @@ public class movimientoredball : MonoBehaviour
             }
         }
 
-        ContadorVidas.text = actualvida.ToString();
+        
 
     }
     void OnCollisionStay(Collision Col)
