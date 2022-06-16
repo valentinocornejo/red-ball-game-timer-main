@@ -4,28 +4,34 @@ using UnityEngine;
 
 public class instatiate : MonoBehaviour
 {
-    public GameObject originalObject1;
+    public GameObject originalObject;
+
+    public bool toco;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        toco = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (toco)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Instantiate(originalObject);
+            }
+        }
     }
    
-    public void InstantiateObject1()
-    {
-        Instantiate(originalObject1);
-    }
+   
     void OnCollisionEnter(Collision choque)
     {
-        if (choque.gameObject1.name == "Sphere")
+        if (choque.gameObject.name == "Sphere")
         {
-            InstantiateObject1();
+            toco = true;
         }
     }
 }

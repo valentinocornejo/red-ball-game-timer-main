@@ -26,7 +26,7 @@ public class movimientoredball : MonoBehaviour
     public bool inmortal;
     public float tiempoInmortal = 1.0f;
 
-
+    public GameObject spawnearCubos;
 
 
     void Start()
@@ -37,14 +37,21 @@ public class movimientoredball : MonoBehaviour
 
 
         actualvida = vidasiniciales;
+        GameObject clon;
 
+        for (int i = 0; i < 10; i++)
+        {
+            clon = Instantiate(spawnearCubos);
+            clon.transform.Translate(20, 5, i);
+            Destroy(clon, 2);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
-
+        
         if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(-0.1f, 0, 0);
@@ -87,10 +94,6 @@ public class movimientoredball : MonoBehaviour
 
       
 
-        if (actualvida > vidasiniciales)
-        {
-            actualvida = vidasiniciales;
-        }
         if (actualvida <= 0)
         {
             Muerte();
@@ -100,7 +103,6 @@ public class movimientoredball : MonoBehaviour
                 SceneManager.LoadScene("Pantalladeinicio");
             }
         }
-
 
         ContadorVidas.text = actualvida.ToString();
 
@@ -157,17 +159,13 @@ public class movimientoredball : MonoBehaviour
             rb.velocity = Vector3.up * launchForce;
         }
 
+       
     }
 
 
 
 
-    public void QuitarVida(float restarvida)
-    {
-        if (inmortal) return;
-        actualvida -= restarvida;
-        StartCoroutine(TiempoInmortal());
-    }
+    
 
     public void Muerte()
     {
