@@ -5,28 +5,29 @@ using UnityEngine;
 public class placasdepresion : MonoBehaviour
 {
     public GameObject muro;
-    public int box1 = 0;
+   
+    public bool box1;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        box1 = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+       
     }
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "box1")
         {
-            box1 += 1;
+            box1 = true;
         }
-        if (collision.gameObject.name == "box2")
+        else if (collision.gameObject.name == "box2")
         {
-            box1 += 1;
+            box1 = true;
         }
     }
 

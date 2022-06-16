@@ -5,11 +5,11 @@ using UnityEngine;
 public class placasdepresion2 : MonoBehaviour
 {
     public GameObject placapresion2;
-    public int box2 = 0;
+    public bool box2;
     // Start is called before the first frame update
     void Start()
     {
-        
+        box2 = false;
     }
 
     // Update is called once per frame
@@ -22,11 +22,11 @@ public class placasdepresion2 : MonoBehaviour
     {
         if (collision.gameObject.name == "box1")
         {
-            box2 += 1;
+            box2 = true;
         }
         if (collision.gameObject.name == "box2")
         {
-            box2 += 1;
+            box2 = true;
         }
     }
 }
