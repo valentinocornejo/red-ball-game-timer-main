@@ -650,6 +650,14 @@ MonoBehaviour:
   jumpheight: 5
   salto: 1
   hit: 1
+  muerte: 0
+  launchForce: 0
+  ContadorVidas: {fileID: 0}
+  vidasiniciales: 3
+  actualvida: 0
+  inmortal: 0
+  tiempoInmortal: 1
+  spawnearCubos: {fileID: 0}
 --- !u!1 &1004035965
 GameObject:
   m_ObjectHideFlags: 0
