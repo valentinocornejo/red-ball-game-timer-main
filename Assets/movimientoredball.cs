@@ -23,7 +23,7 @@ public class movimientoredball : MonoBehaviour
     public float vidasiniciales = 3;
     public float actualvida;
 
-    public bool inmortal = false;
+    public bool inmortal;
     public float tiempoInmortal = 1.0f;
 
 
@@ -85,7 +85,7 @@ public class movimientoredball : MonoBehaviour
         }
 
 
-
+      
 
         if (actualvida > vidasiniciales)
         {
@@ -95,11 +95,12 @@ public class movimientoredball : MonoBehaviour
         {
             Muerte();
             muerte = true;
-            if(muerte == true)
+            if (muerte == true)
             {
                 SceneManager.LoadScene("Pantalladeinicio");
             }
         }
+
 
         ContadorVidas.text = actualvida.ToString();
 
