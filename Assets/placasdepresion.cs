@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class placasdepresion : MonoBehaviour
 {
-    public GameObject muro;
-   
+    public GameObject placasensor1;
     public bool box1;
 
     // Start is called before the first frame update
